@@ -10,7 +10,7 @@ from eyos.services.hail_client import HailClient
 
 
 @pytest.fixture
-def settings():
+def settings() -> Settings:
     """Create test settings."""
     return Settings(
         hail_api_base_url="mock",
@@ -21,7 +21,7 @@ def settings():
 
 
 @pytest.fixture
-def mock_transaction():
+def mock_transaction() -> HailTransaction:
     """Create a mock transaction."""
     # Create a minimal transaction for testing
     transaction = MagicMock(spec=HailTransaction)
@@ -33,7 +33,7 @@ def mock_transaction():
 
 
 @pytest.mark.asyncio
-async def test_send_transaction_success(settings, mock_transaction):
+async def test_send_transaction_success(settings: Settings, mock_transaction: HailTransaction) -> None:
     """Test successful transaction sending."""
     client = HailClient(settings)
 
@@ -45,7 +45,7 @@ async def test_send_transaction_success(settings, mock_transaction):
 
 
 @pytest.mark.asyncio
-async def test_send_transaction_retry_timeout(settings, mock_transaction):
+async def test_send_transaction_retry_timeout(settings: Settings, mock_transaction: HailTransaction) -> None:
     """Test transaction retry on timeout."""
     # Override settings to use a real URL for testing retries
     settings.hail_api_base_url = "https://api.example.com"
@@ -72,7 +72,7 @@ async def test_send_transaction_retry_timeout(settings, mock_transaction):
 
 
 @pytest.mark.asyncio
-async def test_send_transaction_retry_server_error(settings, mock_transaction):
+async def test_send_transaction_retry_server_error(settings: Settings, mock_transaction: HailTransaction) -> None:
     """Test transaction retry on server error."""
     # Override settings to use a real URL for testing retries
     settings.hail_api_base_url = "https://api.example.com"
@@ -103,7 +103,7 @@ async def test_send_transaction_retry_server_error(settings, mock_transaction):
 
 
 @pytest.mark.asyncio
-async def test_send_transaction_client_error(settings, mock_transaction):
+async def test_send_transaction_client_error(settings: Settings, mock_transaction: HailTransaction) -> None:
     """Test transaction handling of client errors (no retry)."""
     # Override settings to use a real URL for testing
     settings.hail_api_base_url = "https://api.example.com"
@@ -131,7 +131,7 @@ async def test_send_transaction_client_error(settings, mock_transaction):
 
 
 @pytest.mark.asyncio
-async def test_send_transaction_max_retries_exceeded(settings, mock_transaction):
+async def test_send_transaction_max_retries_exceeded(settings: Settings, mock_transaction: HailTransaction) -> None:
     """Test transaction handling when max retries are exceeded."""
     # Override settings to use a real URL and low retry count
     settings.hail_api_base_url = "https://api.example.com"

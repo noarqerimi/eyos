@@ -73,13 +73,9 @@ The project includes several Rye scripts for common tasks:
 - `rye run simulate` - Simulate a webhook event using the default payload
 - `rye run simulate-newstore` - Simulate a NewStore webhook event
 - `rye run client-example` - Run the example API client
-- `rye run format` - Format code with Black and isort
-- `rye run lint` - Run static type checking with mypy
+- `rye run pre-commit run -a` - Run pre-commit
 
-To see all available scripts, run:
-```bash
-python -m eyos scripts
-```
+
 
 ### API Endpoints
 

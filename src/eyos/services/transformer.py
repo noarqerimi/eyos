@@ -1,5 +1,5 @@
 import uuid
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Union
 
 from eyos.models.hail import (
     Amount,
@@ -9,6 +9,7 @@ from eyos.models.hail import (
     Customer,
     DeliveryChannel,
     DeliveryRecipient,
+    FiscalInfo,
     HailTransaction,
     PaymentAuthorization,
     PaymentCard,
@@ -22,7 +23,7 @@ from eyos.models.hail import (
     Total,
     TransactionInfo,
 )
-from eyos.models.newstore import NewStoreEvent, OrderItem
+from eyos.models.newstore import NewStoreEvent, OrderItem, Payment
 
 
 async def transform_newstore_to_hail(event: NewStoreEvent) -> HailTransaction:
@@ -57,12 +58,12 @@ async def transform_newstore_to_hail(event: NewStoreEvent) -> HailTransaction:
     )
 
     # Create fiscal information
-    fiscal_info = {
-        "transaction_id": order.id,
-        "transaction_number": order.external_id,
-        "signature": f"DigitalSignature-{order.id}",
-        "printer_id": f"Printer-{order.channel}"
-    }
+    fiscal_info = FiscalInfo(
+        transaction_id=order.id,
+        transaction_number=order.external_id,
+        signature=f"DigitalSignature-{order.id}",
+        printer_id=f"Printer-{order.channel}"
+    )
 
     # Transform payments to tenders
     tenders = await _transform_payments_to_tenders(order.payments, order.currency)
@@ -236,7 +237,7 @@ async def _transform_sale_items(
 
 
 async def _transform_payments_to_tenders(
-    payments: List[Dict[str, Any]],
+    payments: Union[List[Payment], List[Dict[str, Any]]],
     currency_code: str
 ) -> List[Tender]:
     """Transform payments to tenders."""

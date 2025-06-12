@@ -17,7 +17,7 @@ def run(
     port: int = 8000,
     reload: bool = False,
     log_level: str = "info",
-):
+) -> None:
     """Run the API server."""
     configure_logging(log_level)
 
@@ -47,7 +47,7 @@ def run(
 
 
 @cli_app.command()
-def simulate(event_file: str = "newstore_sample_payload.json"):
+def simulate(event_file: str = "newstore_sample_payload.json") -> None:
     """Simulate a NewStore webhook event."""
     import json
     from pathlib import Path
@@ -87,7 +87,7 @@ def simulate(event_file: str = "newstore_sample_payload.json"):
 
 
 @cli_app.command()
-def scripts():
+def scripts() -> None:
     """List available Rye scripts."""
     typer.echo("Available Rye scripts:")
     typer.echo("")

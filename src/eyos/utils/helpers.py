@@ -27,7 +27,8 @@ def load_sample_data(filename: str) -> Dict[str, Any]:
             raise FileNotFoundError(f"Could not find sample data file: {filename}")
 
         with open(file_path, "r") as f:
-            return json.load(f)
+            data: Dict[str, Any] = json.load(f)
+            return data
     except Exception as e:
         logger.error(f"Error loading sample data from {filename}: {e!s}")
         raise

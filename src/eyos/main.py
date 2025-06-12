@@ -1,15 +1,16 @@
-from contextlib import asynccontextmanager
-from typing import AsyncGenerator, Dict, Any
 import logging
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi import FastAPI
+from contextlib import asynccontextmanager
+from typing import Any, AsyncGenerator, Dict
 
-from eyos.exceptions import exception_handlers
-from eyos.utils.helpers import set_log_level
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
 from eyos.config import get_settings
+from eyos.exceptions import exception_handlers
+from eyos.routers import hail_mock, newstore
 from eyos.services.hail_client import HailClient
-from eyos.services.queue_processor import QueueProcessor, InMemoryQueue
-from eyos.routers import newstore, hail_mock
+from eyos.services.queue_processor import InMemoryQueue, QueueProcessor
+from eyos.utils.helpers import set_log_level
 
 # Configure logging
 logging.basicConfig(
@@ -23,17 +24,17 @@ logger = logging.getLogger(__name__)
 async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
     """
     Application lifecycle manager.
-    
+
     This context manager handles startup and shutdown events.
     """
     # Initialize services on startup
     settings = get_settings()
     hail_client = HailClient(settings)
-    
+
     # Create queue and queue processor
     queue = InMemoryQueue()
     queue_processor = QueueProcessor(queue, settings)
-    
+
     # Start the queue processor if enabled
     if settings.queue_enabled:
         logger.info("Starting queue processor...")
@@ -50,15 +51,15 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
 def create_app() -> FastAPI:
     """
     Create and configure the FastAPI application.
-    
+
     Returns:
         Configured FastAPI application
     """
     settings = get_settings()
-    
+
     # Set log level from settings
     set_log_level(settings.log_level)
-    
+
     # Initialize FastAPI application
     app = FastAPI(
         title=settings.api_title,
@@ -100,7 +101,7 @@ def create_app() -> FastAPI:
             "image_build_date": "unknown",
             "version": settings.api_version
         }
-    
+
     return app
 
 

@@ -2,7 +2,7 @@ import asyncio
 import json
 import logging
 from contextlib import asynccontextmanager
-from typing import Any, Awaitable, Callable, Dict, Optional, Union
+from typing import Any, AsyncGenerator, Awaitable, Callable, Dict, Optional, Union
 
 from eyos.config import Settings
 from eyos.models import NewStoreEvent
@@ -22,9 +22,9 @@ class InMemoryQueue:
 
     def __init__(self) -> None:
         """Initialize the in-memory queue."""
-        self.queue = asyncio.Queue()
+        self.queue: asyncio.Queue[Dict[str, Any]] = asyncio.Queue()
         self.running = False
-        self.task: Optional[asyncio.Task] = None
+        self.task: Optional[asyncio.Task[None]] = None
 
     async def enqueue(self, event: Dict[str, Any]) -> None:
         """
@@ -127,7 +127,7 @@ class QueueProcessor:
         self.hail_client = HailClient(settings)
 
     @asynccontextmanager
-    async def lifespan(self):
+    async def lifespan(self) -> AsyncGenerator[None, None]:
         """Lifecycle manager for the queue processor."""
         await self.queue.start(self.process_event)
         try:

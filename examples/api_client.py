@@ -12,8 +12,20 @@ from pathlib import Path
 import httpx
 
 
-async def send_webhook_event(event_file: str = "../newstore_sample_payload.json", url: str = "http://localhost:8000/webhooks/newstore/simulate"):
-    """Send a webhook event to the API."""
+async def send_webhook_event(
+    event_file: str = "../newstore_sample_payload.json",
+    url: str = "http://localhost:8000/webhooks/newstore/simulate"
+) -> bool:
+    """
+    Send a webhook event to the API.
+
+    Args:
+        event_file: Path to the event file
+        url: API endpoint URL
+
+    Returns:
+        True if the event was accepted, False otherwise
+    """
     # Load the event from file
     try:
         event_path = Path(event_file)
@@ -46,8 +58,16 @@ async def send_webhook_event(event_file: str = "../newstore_sample_payload.json"
         return False
 
 
-async def check_api_status(url: str = "http://localhost:8000"):
-    """Check if the API is running."""
+async def check_api_status(url: str = "http://localhost:8000") -> bool:
+    """
+    Check if the API is running.
+
+    Args:
+        url: API base URL
+
+    Returns:
+        True if the API is running, False otherwise
+    """
     try:
         async with httpx.AsyncClient() as client:
             response = await client.get(url)
@@ -65,8 +85,12 @@ async def check_api_status(url: str = "http://localhost:8000"):
         return False
 
 
-async def main():
-    """Main entry point."""
+async def main() -> None:
+    """
+    Main entry point.
+
+    This function checks if the API is running, and if so, sends a sample event.
+    """
     # Check if the API is running
     api_running = await check_api_status()
 

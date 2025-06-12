@@ -58,7 +58,7 @@ test-cov = "pytest --cov=eyos"
 
 # Simulate events
 simulate = "python -m eyos simulate"
-simulate-newstore = "python -m eyos simulate newstore_sample_payload.json"
+simulate-newstore = "python -m eyos simulate"
 
 # Client example
 client-example = "python examples/api_client.py"
@@ -86,5 +86,5 @@ lint.extend-select = [
     "YTT",
 ]
 lint.ignore = [
-    "E712", "RUF005",
+    "E712", "RUF005", "B008", "F841"
 ]

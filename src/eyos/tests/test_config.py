@@ -3,7 +3,7 @@ import os
 from eyos.config import get_settings
 
 
-def test_default_settings():
+def test_default_settings() -> None:
     """Test that default settings are loaded correctly."""
     settings = get_settings()
 
@@ -13,7 +13,7 @@ def test_default_settings():
     assert settings.newstore_webhook_secret == "mock_webhook_secret"
 
 
-def test_env_override():
+def test_env_override() -> None:
     """Test that environment variables override default settings."""
     # Set environment variables
     os.environ["EYOS_API_TITLE"] = "Custom API Title"
@@ -31,7 +31,7 @@ def test_env_override():
     del os.environ["EYOS_HAIL_API_MAX_RETRIES"]
 
 
-def test_supported_events():
+def test_supported_events() -> None:
     """Test that supported events are loaded correctly."""
     settings = get_settings()
 

@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
 
 import pytest
 from fastapi import HTTPException, status
@@ -9,12 +9,12 @@ from fastapi.testclient import TestClient
 from eyos.config import Settings
 from eyos.main import app
 from eyos.models.newstore import NewStoreEvent
-from eyos.services.newstore_webhook import NewStoreWebhookHandler
 from eyos.services.hail_client import HailClient
+from eyos.services.newstore_webhook import NewStoreWebhookHandler
 
 
 @pytest.fixture
-def sample_newstore_event():
+def sample_newstore_event() -> NewStoreEvent:
     """Load sample NewStore event data."""
     sample_file = Path(__file__).parent.parent.parent.parent / "newstore_sample_payload.json"
     with open(sample_file, "r") as f:
@@ -23,7 +23,7 @@ def sample_newstore_event():
 
 
 @pytest.fixture
-def webhook_handler():
+def webhook_handler() -> NewStoreWebhookHandler:
     """Create a webhook handler with mock settings."""
     settings = Settings(
         newstore_webhook_secret="test_secret",
@@ -36,14 +36,14 @@ def webhook_handler():
 
 
 @pytest.mark.asyncio
-async def test_validate_event_success(webhook_handler, sample_newstore_event):
+async def test_validate_event_success(webhook_handler: NewStoreWebhookHandler, sample_newstore_event: NewStoreEvent) -> None:
     """Test successful event validation."""
     # Should not raise an exception
     await webhook_handler.validate_event(sample_newstore_event)
 
 
 @pytest.mark.asyncio
-async def test_validate_event_unsupported_type(webhook_handler, sample_newstore_event):
+async def test_validate_event_unsupported_type(webhook_handler: NewStoreWebhookHandler, sample_newstore_event: NewStoreEvent) -> None:
     """Test validation of an unsupported event type."""
     # Modify the event type
     sample_newstore_event.name = "order.created"
@@ -57,11 +57,11 @@ async def test_validate_event_unsupported_type(webhook_handler, sample_newstore_
 
 
 @pytest.mark.asyncio
-async def test_process_event(webhook_handler, sample_newstore_event):
+async def test_process_event(webhook_handler: NewStoreWebhookHandler, sample_newstore_event: NewStoreEvent) -> None:
     """Test event processing."""
     # Call the method directly without mocking to use the real implementation
     result = await webhook_handler.process_event(sample_newstore_event)
-    
+
     # Verify the result
     assert result["event_id"] == sample_newstore_event.payload.id
     assert result["event_type"] == sample_newstore_event.name
@@ -73,7 +73,7 @@ async def test_process_event(webhook_handler, sample_newstore_event):
 
 
 @pytest.mark.skip("Integration test - requires running server")
-def test_webhook_endpoint():
+def test_webhook_endpoint() -> None:
     """Test the webhook endpoint."""
     # Create a test client
     client = TestClient(app)

@@ -60,11 +60,12 @@ class HailClient:
 
                 # Simulate a successful response
                 logger.info(f"Successfully sent transaction to Hail API: {transaction.receipt.transaction_information.id}")
-                return {
+                result: Dict[str, Any] = {
                     "status": "success",
                     "transaction_id": transaction.receipt.transaction_information.id,
                     "message": "Transaction processed successfully"
                 }
+                return result
 
             # In a real implementation:
             headers = {
@@ -80,7 +81,8 @@ class HailClient:
                 )
 
                 response.raise_for_status()
-                return response.json()
+                result_data: Dict[str, Any] = response.json()
+                return result_data
 
         except (httpx.ConnectTimeout, httpx.ConnectError, httpx.ReadTimeout) as e:
             # Network-related errors - retryable

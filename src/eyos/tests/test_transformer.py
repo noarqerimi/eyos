@@ -9,7 +9,7 @@ from eyos.services.transformer import transform_newstore_to_hail
 
 
 @pytest.fixture
-def sample_newstore_event():
+def sample_newstore_event() -> NewStoreEvent:
     """Load sample NewStore event data."""
     sample_file = Path(__file__).parent.parent.parent.parent / "newstore_sample_payload.json"
     with open(sample_file, "r") as f:
@@ -18,7 +18,7 @@ def sample_newstore_event():
 
 
 @pytest.mark.asyncio
-async def test_transform_newstore_to_hail(sample_newstore_event):
+async def test_transform_newstore_to_hail(sample_newstore_event: NewStoreEvent) -> None:
     """Test the transformation from NewStore to Hail format."""
     # Transform the event
     hail_transaction = await transform_newstore_to_hail(sample_newstore_event)
@@ -44,7 +44,7 @@ async def test_transform_newstore_to_hail(sample_newstore_event):
 
 
 @pytest.mark.asyncio
-async def test_transform_sale_items(sample_newstore_event):
+async def test_transform_sale_items(sample_newstore_event: NewStoreEvent) -> None:
     """Test the transformation of sale items."""
     # Transform the event
     hail_transaction = await transform_newstore_to_hail(sample_newstore_event)
@@ -62,7 +62,7 @@ async def test_transform_sale_items(sample_newstore_event):
 
 
 @pytest.mark.asyncio
-async def test_transform_tenders(sample_newstore_event):
+async def test_transform_tenders(sample_newstore_event: NewStoreEvent) -> None:
     """Test the transformation of payment tenders."""
     # Transform the event
     hail_transaction = await transform_newstore_to_hail(sample_newstore_event)

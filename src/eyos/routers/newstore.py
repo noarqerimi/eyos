@@ -7,7 +7,7 @@ from eyos.config import Settings, get_settings
 from eyos.models.newstore import NewStoreEvent
 from eyos.services.hail_client import HailClient
 from eyos.services.newstore_webhook import NewStoreWebhookHandler
-from eyos.services.queue_processor import QueueProcessor, InMemoryQueue
+from eyos.services.queue_processor import InMemoryQueue, QueueProcessor
 
 logger = logging.getLogger(__name__)
 
