@@ -1,0 +1,53 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.5.0
+  hooks:
+  - id: check-merge-conflict
+  - id: debug-statements
+  - id: check-yaml
+    args:
+    - --allow-multiple-documents
+  - id: check-json
+  - id: trailing-whitespace
+  - id: end-of-file-fixer
+    exclude: .*\.md$|.*secrets\.yaml$|^kubernetes/overlays/production/sj_workers/.*\.yaml$
+  - id: mixed-line-ending
+    args:
+    - --fix=lf
+  - id: no-commit-to-branch
+- repo: local
+  hooks:
+  - id: ruff
+    name: run ruff
+    entry: rye run ruff check . --fix
+    language: system
+    types:
+    - python
+    pass_filenames: false
+  - id: mypy
+    name: run mypy
+    entry: rye run mypy .
+    language: system
+    types:
+    - python
+    args:
+    - --exclude=migrations
+    - --strict
+    - --ignore-missing-imports
+    - --namespace-packages
+    - --cache-dir=/dev/null  # prevents caching altogether
+    pass_filenames: false
+  - id: pip-audit
+    name: run pip-audit
+    entry: rye run pip-audit
+    language: system
+    args:
+    - --ignore-vuln
+    - GHSA-cjwg-qfpm-7377
+    - --ignore-vuln
+    - GHSA-6c5p-j8vq-pqhj
+    - --ignore-vuln
+    - GHSA-f96h-pmfr-66vw
+    - --ignore-vuln
+    - GHSA-9hjg-9r4m-mvj7
+    pass_filenames: false

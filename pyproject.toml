@@ -1,0 +1,90 @@
+[project]
+name = "eyos"
+version = "0.1.0"
+description = "NewStore to Hail API Integration"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+    { name = "eyos team", email = "example@eyos.com" }
+]
+
+dependencies = [
+    "fastapi>=0.100.0",
+    "uvicorn>=0.34.3",
+    "pydantic>=2.0.0",
+    "pydantic-settings>=2.0.0",
+    "httpx>=0.24.0",
+    "python-multipart>=0.0.6",
+    "python-dotenv>=1.0.0",
+    "typer>=0.9.0",
+]
+
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.1.0",
+    "black>=23.3.0",
+    "isort>=5.12.0",
+    "mypy>=1.3.0",
+    "tomli>=2.0.0",
+    "pre-commit>=3.7.0,<4.5.0",
+    "mypy>=1.8.0,<2.0.0",
+    "ruff>=0.3.3,<1.0.0",
+    "pytest>=8.1.1,<9.0.0",
+    "pytest-httpx>=0.27.0,<1.0.0",
+    "pytest-cov>=4.1.0,<5.5.0",
+    "pytest-asyncio >= 0.23.4,<0.24.0",
+    "pytest-xdist[psutil]>=3.5.0,<3.8.0",
+    "pip-audit>=2.7.0,<3.0",
+
+]
+
+[tool.rye.scripts]
+# Development server
+dev = "python -m eyos run --reload"
+start = "python -m eyos run"
+
+# Testing
+test = "pytest"
+test-cov = "pytest --cov=eyos"
+
+# Simulate events
+simulate = "python -m eyos simulate"
+simulate-newstore = "python -m eyos simulate newstore_sample_payload.json"
+
+# Client example
+client-example = "python examples/api_client.py"
+
+# Formatting and linting
+format = { chain = ["black src", "isort src"] }
+lint = "mypy src"
+
+[tool.pytest.ini_options]
+testpaths = ["src/eyos/tests"]
+asyncio_mode = "auto"
+
+[tool.mypy]
+exclude = ['^manage\.py', '^migrations', '^src/raptor_data_api/commands/.*']
+
+[tool.ruff]
+line-length = 120
+lint.extend-select = [
+    "I",
+    "B",
+    "C4",
+    "PGH",
+    "RUF",
+    "W",
+    "YTT",
+]
+lint.ignore = [
+    "E712", "RUF005",
+]

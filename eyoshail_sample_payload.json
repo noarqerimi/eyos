@@ -1,0 +1,304 @@
+{
+    "type": "transaction",
+    "device_ref": "NEWLOOK-DEVICE-001",
+    "receipt": {
+        "paper_printed": false,
+        "header": "New Look - Receipt",
+        "footer": "Thank you for shopping with New Look!",
+        "total": {
+            "header": "Total",
+            "footer": "Includes all applicable taxes",
+            "amount": {
+                "value": 150.00,
+                "unit": "GBP"
+            },
+            "text": "Total Amount Due",
+            "type": "Total"
+        },
+        "sale_items": [
+            {
+                "header": "Floral Midi Dress",
+                "footer": "Spring Collection 2024",
+                "quantity": {
+                    "value": 1,
+                    "unit": "piece"
+                },
+                "total": {
+                    "value": 100.00
+                },
+                "sku": "NL100FLD",
+                "currency": {
+                    "code": "GBP",
+                    "language_code": "en",
+                    "country_code": "GB"
+                },
+                "salesperson": {
+                    "name": "Sarah Brown",
+                    "id": "SB-2024"
+                },
+                "color": "Blue",
+                "size": "M",
+                "alternate_sku": "",
+                "gtin": "0123456789001",
+                "serial_number": "",
+                "unit_price": {
+                    "value": 100.00,
+                    "unit": "GBP"
+                },
+                "original_price": {
+                    "value": 100.00,
+                    "unit": "GBP"
+                },
+                "text": "Floral Midi Dress",
+                "notes": "Best-seller this season",
+                "full_text": "Floral Midi Dress - Size M - Blue",
+                "tax": {
+                    "header": "VAT",
+                    "footer": "",
+                    "amount": {
+                        "value": 16.67,
+                        "unit": "GBP"
+                    },
+                    "exempt": false,
+                    "net_taxed_amount": {
+                        "value": 83.33,
+                        "unit": "GBP"
+                    },
+                    "rate": 20,
+                    "gross_taxed_amount": {
+                        "value": 100.00,
+                        "unit": "GBP"
+                    },
+                    "code": "VAT20",
+                    "reason": "Standard rate",
+                    "authority": {
+                        "identifier": "UKVAT",
+                        "name": "HM Revenue & Customs"
+                    },
+                    "text": "VAT at 20%"
+                },
+                "discounts": [],
+                "additional_attributes": {
+                    "product_category": "Dress",
+                    "brand": "New Look",
+                    "size": "M",
+                    "color": "Blue",
+                    "collection": "Spring 2024",
+                    "gender": "Female",
+                    "sustainability_label": "Recycled materials",
+                    "discount_code": "SPRING20",
+                    "loyalty_points_earned": 50
+                },
+                "gift_numbers": []
+            },
+            {
+                "header": "Classic Denim Jacket",
+                "footer": "Wardrobe Essential",
+                "quantity": {
+                    "value": 1,
+                    "unit": "piece"
+                },
+                "total": {
+                    "value": 50.00
+                },
+                "sku": "NL250CDJ",
+                "currency": {
+                    "code": "GBP",
+                    "language_code": "en",
+                    "country_code": "GB"
+                },
+                "salesperson": {
+                    "name": "Emily Smith",
+                    "id": "ES-2024"
+                },
+                "color": "Light Blue",
+                "size": "L",
+                "alternate_sku": "",
+                "gtin": "0123456789028",
+                "serial_number": "",
+                "unit_price": {
+                    "value": 50.00,
+                    "unit": "GBP"
+                },
+                "original_price": {
+                    "value": 50.00,
+                    "unit": "GBP"
+                },
+                "text": "Classic Denim Jacket",
+                "notes": "Versatile for any look",
+                "full_text": "Classic Denim Jacket - Size L - Light Blue",
+                "tax": {
+                    "header": "VAT",
+                    "footer": "",
+                    "amount": {
+                        "value": 8.33,
+                        "unit": "GBP"
+                    },
+                    "exempt": false,
+                    "net_taxed_amount": {
+                        "value": 41.67,
+                        "unit": "GBP"
+                    },
+                    "rate": 20,
+                    "gross_taxed_amount": {
+                        "value": 50.00,
+                        "unit": "GBP"
+                    },
+                    "code": "VAT20",
+                    "reason": "Standard rate",
+                    "authority": {
+                        "identifier": "UKVAT",
+                        "name": "HM Revenue & Customs"
+                    },
+                    "text": "VAT at 20%"
+                },
+                "discounts": [],
+                "gift_numbers": []
+            }
+        ],
+        "currency": {
+            "code": "GBP",
+            "language_code": "en",
+            "country_code": "GB"
+        },
+        "additional_attributes": {
+            "product_category": "Fashion",
+            "brand": "New Look",
+            "size": "M",
+            "color": "Blue",
+            "collection": "Spring 2024",
+            "gender": "Female",
+            "sustainability_label": "Recycled materials",
+            "discount_code": "SPRING20",
+            "loyalty_points_earned": 50
+        },
+        "associate": {
+            "name": "Emily Smith",
+            "id": "ES-2024"
+        },
+        "barcode": "NL-12345-6789",
+        "discounts": [
+            {
+                "header": "Spring Sale",
+                "footer": "Seasonal Discount",
+                "text": "10% off your next purchase",
+                "amount": {
+                    "value": 0,
+                    "unit": "GBP"
+                },
+                "reduction_percent": 10
+            }
+        ],
+        "fees": [],
+        "fiscal_information": {
+            "transaction_id": "TX9876543210",
+            "transaction_number": "20250605-54321",
+            "signature": "DigitalSignatureOfReceipt",
+            "printer_id": "Printer-NEWLOOK-001"
+        },
+        "other_totals": [],
+        "reason": "Purchase",
+        "salesperson": {
+            "name": "Emily Smith",
+            "id": "ES-2024"
+        },
+        "other_text": "Copy of Receipt",
+        "shipping": {
+            "header": "Shipping",
+            "footer": "Standard Delivery",
+            "amount": {
+                "value": 5.00,
+                "unit": "GBP"
+            }
+        },
+        "subtotal": {
+            "header": "Subtotal",
+            "footer": "",
+            "amount": {
+                "value": 145.00,
+                "unit": "GBP"
+            },
+            "text": "Subtotal before taxes",
+            "type": "Subtotal"
+        },
+        "taxes": [
+            {
+                "header": "VAT",
+                "footer": "",
+                "amount": {
+                    "value": 25.00,
+                    "unit": "GBP"
+                },
+                "exempt": false,
+                "net_taxed_amount": {
+                    "value": 125.00,
+                    "unit": "GBP"
+                },
+                "rate": 20,
+                "gross_taxed_amount": {
+                    "value": 150.00,
+                    "unit": "GBP"
+                },
+                "code": "VAT20",
+                "reason": "Standard rate",
+                "authority": {
+                    "identifier": "UKVAT",
+                    "name": "HM Revenue & Customs"
+                },
+                "text": "Value Added Tax at 20%"
+            }
+        ],
+        "tenders": [
+            {
+                "header": "Credit Card",
+                "footer": "",
+                "type": "card",
+                "amount": {
+                    "value": 150.00,
+                    "unit": "GBP"
+                },
+                "text": "Total paid by Visa",
+                "payment_card": {
+                    "type": "Visa",
+                    "start_date": "01/23",
+                    "expiry_date": "01/27",
+                    "name_on_card": "Customer",
+                    "slip": "",
+                    "token": "CardToken987654321"
+                },
+                "payment_authorization": {
+                    "provider": {
+                        "id": "VisaProvider"
+                    },
+                    "reference_id": "AuthRef654321",
+                    "approval_code": "Approval654321",
+                    "reference_text": "Fashion payment",
+                    "token": "fashiontoken123"
+                }
+            }
+        ],
+        "transaction_information": {
+            "date_time": "2025-06-05T10:00:00.000Z",
+            "id": "TRX-NL-987654321012345",
+            "number": "20250605-54321"
+        },
+        "vat_refund_receipt_requested": false
+    },
+    "flags": [],
+    "delivery_channels": [
+        {
+            "channel": "email",
+            "recipient": {
+                "value": "hail_test+newlook@eyos.one"
+            }
+        }
+    ],
+    "customer": {
+        "consent_actions": [
+            {
+                "identifier": "general",
+                "value": "grant_consent"
+            }
+        ]
+    }
+}

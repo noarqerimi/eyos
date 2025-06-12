@@ -1,0 +1,121 @@
+{
+  "tenant": "newlook",
+  "name": "order.completed",
+  "published_at": "2024-07-15T14:30:00.000Z",
+  "payload": {
+    "id": "3dc8d806-29fb-42d8-a33c-e0eea0d10260",
+    "external_id": "NSO00001001",
+    "created_at": "2024-07-15T14:25:00.000Z",
+    "placed_at": "2024-07-15T14:28:00.000Z",
+    "completed_at": "2024-07-15T14:29:55.000Z",
+    "associate_id": "d2b3ea60-98cb-4518-ab10-8a7d4250bec2",
+    "associate_email": "jane.doe@newlook.com",
+    "channel_type": "store",
+    "channel": "store-001",
+    "is_exchange": false,
+    "customer_email": "alice.smith@example.com",
+    "customer_id": "c1cced42-8ebb-4f36-ae39-28d2ee18517c",
+    "external_customer_id": "CUST789012",
+    "is_historical": false,
+    "discounts": [],
+    "billing_address": {
+      "first_name": "Alice",
+      "last_name": "Smith",
+      "address_line_1": "123 High Street",
+      "address_line_2": "",
+      "zip_code": "W1D 4XT",
+      "city": "London",
+      "state": "",
+      "country": "GB",
+      "phone": "07123456789"
+    },
+    "shipping_address": {
+      "first_name": "Alice",
+      "last_name": "Smith",
+      "address_line_1": "123 High Street",
+      "address_line_2": "",
+      "zip_code": "W1D 4XT",
+      "city": "London",
+      "state": "",
+      "country": "GB",
+      "phone": "07123456789"
+    },
+    "price_method": "tax_excluded",
+    "subtotal": 125,
+    "discount_total": 0,
+    "shipping_total": 0,
+    "shipping_tax": 0,
+    "tax_total": 25,
+    "grand_total": 150,
+    "currency": "GBP",
+    "tax_strategy": "fixedrate",
+    "tax_exempt": false,
+    "extended_attributes": [],
+    "items": [
+      {
+        "id": "c13e2296-4dad-4e4e-8178-48b2cd22e49c",
+        "item_type": "product",
+        "product_id": "SKU-1001",
+        "pricebook_id": "default",
+        "pricebook_price": 50,
+        "list_price": 50,
+        "item_discounts": 0,
+        "order_discounts": 0,
+        "tax": 10,
+        "tax_provider_details": [
+          {
+            "name": "Standard VAT",
+            "amount": 10,
+            "rate": 0.2
+          }
+        ],
+        "tax_class": "PC040100",
+        "quantity": 1,
+        "status": "complete",
+        "shipping_service_level": "IN_STORE_HANDOVER",
+        "is_preorder": false,
+        "future_fulfillment_location_id": "d9cca69f-acb2-4218-a581-aca396da04fe",
+        "shipping_method": "in_store_handover",
+        "extended_attributes": [],
+        "discounts": []
+      },
+      {
+        "id": "bf43a991-b45f-4e9e-87ad-ce582a4dc15e",
+        "item_type": "product",
+        "product_id": "SKU-1002",
+        "pricebook_id": "default",
+        "pricebook_price": 75,
+        "list_price": 75,
+        "item_discounts": 0,
+        "order_discounts": 0,
+        "tax": 15,
+        "tax_provider_details": [
+          {
+            "name": "Standard VAT",
+            "amount": 15,
+            "rate": 0.2
+          }
+        ],
+        "tax_class": "PC040100",
+        "quantity": 1,
+        "status": "complete",
+        "shipping_service_level": "IN_STORE_HANDOVER",
+        "is_preorder": false,
+        "future_fulfillment_location_id": "d9cca69f-acb2-4218-a581-aca396da04fe",
+        "shipping_method": "in_store_handover",
+        "extended_attributes": [],
+        "discounts": []
+      }
+    ],
+    "payments": [
+      {
+        "payment_method": "Credit Card",
+        "card_brand": "VISA",
+        "card_last4": "1111",
+        "amount": 150,
+        "currency": "GBP",
+        "status": "paid"
+      }
+    ]
+  }
+}
