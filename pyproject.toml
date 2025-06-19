@@ -3,7 +3,7 @@ name = "eyos"
 version = "0.1.0"
 description = "NewStore to Hail API Integration"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = "==3.12.8"
 license = { text = "MIT" }
 authors = [
     { name = "eyos team", email = "example@eyos.com" }
@@ -49,16 +49,16 @@ dev-dependencies = [
 
 [tool.rye.scripts]
 # Development server
-dev = "python -m eyos run --reload"
-start = "python -m eyos run"
+dev = "python src/eyos/main.py run --reload"
+start = "python src/eyos/main.py run"
 
 # Testing
 test = "pytest"
 test-cov = "pytest --cov=eyos"
 
 # Simulate events
-simulate = "python -m eyos simulate"
-simulate-newstore = "python -m eyos simulate"
+simulate = "python src/eyos/main.py simulate"
+simulate-newstore = "python src/eyos/main.py simulate"
 
 # Client example
 client-example = "python examples/api_client.py"

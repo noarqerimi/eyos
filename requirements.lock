@@ -15,13 +15,13 @@ annotated-types==0.7.0
 anyio==4.9.0
     # via httpx
     # via starlette
-certifi==2025.4.26
+certifi==2025.6.15
     # via httpcore
     # via httpx
 click==8.2.1
     # via typer
     # via uvicorn
-fastapi==0.115.12
+fastapi==0.115.13
     # via eyos
 h11==0.16.0
     # via httpcore
@@ -37,7 +37,7 @@ markdown-it-py==3.0.0
     # via rich
 mdurl==0.1.2
     # via markdown-it-py
-pydantic==2.11.5
+pydantic==2.11.7
     # via eyos
     # via fastapi
     # via pydantic-settings

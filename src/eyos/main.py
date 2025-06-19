@@ -5,6 +5,7 @@ from typing import Any, AsyncGenerator, Dict
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from eyos.commands.cli import cli_app
 from eyos.config import get_settings
 from eyos.exceptions import exception_handlers
 from eyos.routers import hail_mock, newstore
@@ -107,3 +108,6 @@ def create_app() -> FastAPI:
 
 # Create the default application instance
 app = create_app()
+
+if __name__ == "__main__":
+    cli_app()
